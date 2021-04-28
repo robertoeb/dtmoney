@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
 import { NewTrasactionModal } from "./components/NewTransactionModal";
 import { GlobalStyle } from "./styles/global";
+import { TransactionsProvider } from "./hooks/useTransactions";
 
 export function App() {
   const [isNewTranscationModalOpen, setIsNewTranscationModalOpen] = useState(
@@ -19,7 +20,7 @@ export function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenNewTransationModal={handleOpenNewTranscationModal} />
       <Dashboard />
       <NewTrasactionModal
@@ -27,6 +28,6 @@ export function App() {
         onRequestClose={handleCloseNewTranscationModal}
       />
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
